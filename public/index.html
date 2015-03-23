@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catalogger</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  </head>
+  <body>
+    <div id="pagecontainer"></div>
+    <script type="text/jsx">
+      var converter = new Showdown.converter();
+
+      var Header = React.createClass({
+        render: function(){
+          return (
+            <div className="header" style={{color: this.props.headerData.color}}>
+              {this.props.headerData.text}
+            </div>
+          )
+        }
+      });
+
+      var ItemInput = React.createClass({
+        render: function(){
+          return (
+            <div className="iteminput">
+              <input type="file" id="take-picture" className="add-picture button" accept="image/*" /> 
+            </div>
+          )
+        }
+      });
+
+      var ItemList = React.createClass({
+        render: function(){
+          return (
+            <div className="itemlist">
+            </div>
+          )
+        }
+      });
+
+      var ItemBox = React.createClass({
+        render: function(){
+          return (
+            <div className="itembox">
+              <ItemInput />
+              <ItemList />
+            </div>
+          )
+        }
+      });
+
+      var Content = React.createClass({
+        render: function(){
+          return (
+            <div className="content">
+              {this.props.contentData.text}
+              <ItemBox />
+            </div>
+          )
+        }
+      });
+
+      var BodyContainer = React.createClass({
+        render: function() {
+          return (
+            <div className="bodycontainer">
+                <Header headerData={this.props.pageData.headerData} />
+                <Content contentData={this.props.pageData.contentData} />
+            </div>
+          );
+        }
+      });
+
+      var pageData = {
+        headerData: {text: "Header", color: "Red"},
+        contentData: {text: "Content"}
+      }
+      React.render(
+        <BodyContainer pageData={pageData} />,
+        document.getElementById('pagecontainer')
+      );
+
+    </script>
+  </body>
+</html>
