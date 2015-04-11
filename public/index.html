@@ -7,21 +7,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/JSXTransformer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+    <script src="/js/templates.min.js"></script>
   </head>
   <body>
     <div id="pagecontainer"></div>
     <script type="text/jsx">
       var converter = new Showdown.converter();
 
-      var Header = React.createClass({
-        render: function(){
-          return (
-            <div className="header" style={{color: this.props.headerData.color}}>
-              {this.props.headerData.text}
-            </div>
-          )
-        }
-      });
 
       var ItemInput = React.createClass({
         render: function(){
@@ -76,11 +68,11 @@
       });
 
       var pageData = {
-        headerData: {text: "Header", color: "Red"},
+        headerData: {text: "Tori's Beanie Boo Catalog", color: "Red"},
         contentData: {text: "Content"}
       }
       React.render(
-        <BodyContainer pageData={pageData} />,
+        <PageContent pageData={pageData} />,
         document.getElementById('pagecontainer')
       );
 
