@@ -11,20 +11,23 @@ var Section_CurrentInfo = React.createClass({displayName: "Section_CurrentInfo",
 			}
 		}
 		return (
-			React.createElement("div", {className: "current_info_container"}, 
+			React.createElement("div", {className: "current_info_container row"}, 
 				React.createElement(LatestPost, {data: data.latestPost}), 
 				React.createElement(NextBirthday, {data: data.nextBirthday})
 			)
 		)
 	}
-}); 
+});
 
 var LatestPost = React.createClass({displayName: "LatestPost",
 	render: function(){
 		return (
-			React.createElement("div", {className: "lastest_post"}, 
-				React.createElement("div", {className: "lastest_post_title"}, this.props.data.title), 
-				React.createElement("div", {className: "latest_post_content"}, this.props.data.content)
+			React.createElement("div", {className: "latest_post col-md-9"}, 
+				React.createElement("div", {className: "latest_post_title"}, this.props.data.title), 
+				React.createElement("div", {className: "latest_post_content"}, this.props.data.content), 
+				React.createElement("div", {className: "latest_post_all_posts"}, 
+					React.createElement("button", {className: "btn btn-default btn-xs", type: "button", value: "All Posts"}, "All Posts")
+				)
 			)
 		) 
 	}
@@ -33,8 +36,8 @@ var LatestPost = React.createClass({displayName: "LatestPost",
 var NextBirthday = React.createClass({displayName: "NextBirthday",
 	render: function(){
 		return(
-			React.createElement("div", {className: "next_birthday"}, 
-				React.createElement("div", {className: "next_birthdat_title"}, this.props.data.title), 
+			React.createElement("div", {className: "next_birthday col-md-3"}, 
+				React.createElement("div", {className: "next_birthday_title"}, this.props.data.title), 
 				React.createElement("div", {className: "next_birthday_image"})
 			)
 		)
@@ -43,7 +46,7 @@ var NextBirthday = React.createClass({displayName: "NextBirthday",
 var Header = React.createClass({displayName: "Header",
   render: function(){
 		return (
-	    React.createElement("div", {className: "header"}, 
+			React.createElement("div", {className: "header row"}, 
 	    	React.createElement(Title, {headerData: this.props.headerData}), 
 	    	React.createElement(Login, {data: this.props})
 	    )
@@ -54,7 +57,7 @@ var Header = React.createClass({displayName: "Header",
 var Title = React.createClass({displayName: "Title",
 	render: function(){
 		return (
-			React.createElement("div", {className: "title"}, 
+			React.createElement("div", {className: "title col-md-9"}, 
 				this.props.headerData.text
 			)
 		)
@@ -64,7 +67,9 @@ var Title = React.createClass({displayName: "Title",
 var Login = React.createClass({displayName: "Login",
 	render: function(){
 		return (
-			React.createElement("div", {className: "login"}, "Login")
+			React.createElement("div", {className: "login col-md-3"}, 
+				React.createElement("button", {className: "btn btn-default btn-sm", type: "button", value: "Login"}, "Login")
+			)
 		)
 	}
 }); 
@@ -98,7 +103,7 @@ var Section_ItemsContainer = React.createClass({displayName: "Section_ItemsConta
 var PageContent = React.createClass({displayName: "PageContent",
 	render: function() {
 		return (
-			React.createElement("div", {className: "pageContent"}, 
+			React.createElement("div", {className: "pageContent container"}, 
 				React.createElement(Header, {headerData: this.props.pageData.headerData}), 
 				React.createElement(Section_CurrentInfo, null), 
 				React.createElement(Section_ItemsContainer, null)

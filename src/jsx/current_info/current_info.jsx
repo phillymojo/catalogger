@@ -11,20 +11,23 @@ var Section_CurrentInfo = React.createClass({
 			}
 		}
 		return (
-			<div className="current_info_container">
+			<div className="current_info_container row">
 				<LatestPost data={data.latestPost} />
 				<NextBirthday data={data.nextBirthday} />
 			</div>
 		)
 	}
-}); 
+});
 
 var LatestPost = React.createClass({
 	render: function(){
 		return (
-			<div className="lastest_post">
-				<div className="lastest_post_title">{this.props.data.title}</div>
+			<div className="latest_post col-md-9">
+				<div className="latest_post_title">{this.props.data.title}</div>
 				<div className="latest_post_content">{this.props.data.content}</div>
+				<div className="latest_post_all_posts">
+					<button className="btn btn-default btn-xs" type="button" value="All Posts">All Posts</button>
+				</div>
 			</div>
 		) 
 	}
@@ -33,8 +36,8 @@ var LatestPost = React.createClass({
 var NextBirthday = React.createClass({
 	render: function(){
 		return(
-			<div className="next_birthday">
-				<div className="next_birthdat_title">{this.props.data.title}</div>
+			<div className="next_birthday col-md-3">
+				<div className="next_birthday_title">{this.props.data.title}</div>
 				<div className="next_birthday_image"></div>
 			</div>
 		)

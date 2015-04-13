@@ -11,20 +11,23 @@ var Section_CurrentInfo = React.createClass({displayName: "Section_CurrentInfo",
 			}
 		}
 		return (
-			React.createElement("div", {className: "current_info_container"}, 
+			React.createElement("div", {className: "current_info_container row"}, 
 				React.createElement(LatestPost, {data: data.latestPost}), 
 				React.createElement(NextBirthday, {data: data.nextBirthday})
 			)
 		)
 	}
-}); 
+});
 
 var LatestPost = React.createClass({displayName: "LatestPost",
 	render: function(){
 		return (
-			React.createElement("div", {className: "lastest_post"}, 
-				React.createElement("div", {className: "lastest_post_title"}, this.props.data.title), 
-				React.createElement("div", {className: "latest_post_content"}, this.props.data.content)
+			React.createElement("div", {className: "latest_post col-md-9"}, 
+				React.createElement("div", {className: "latest_post_title"}, this.props.data.title), 
+				React.createElement("div", {className: "latest_post_content"}, this.props.data.content), 
+				React.createElement("div", {className: "latest_post_all_posts"}, 
+					React.createElement("button", {className: "btn btn-default btn-xs", type: "button", value: "All Posts"}, "All Posts")
+				)
 			)
 		) 
 	}
@@ -33,8 +36,8 @@ var LatestPost = React.createClass({displayName: "LatestPost",
 var NextBirthday = React.createClass({displayName: "NextBirthday",
 	render: function(){
 		return(
-			React.createElement("div", {className: "next_birthday"}, 
-				React.createElement("div", {className: "next_birthdat_title"}, this.props.data.title), 
+			React.createElement("div", {className: "next_birthday col-md-3"}, 
+				React.createElement("div", {className: "next_birthday_title"}, this.props.data.title), 
 				React.createElement("div", {className: "next_birthday_image"})
 			)
 		)

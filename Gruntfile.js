@@ -9,16 +9,31 @@ module.exports = function(grunt){
 				},
 				src: ['build/templates/**/*.js'],
 				dest: 'public/js/templates.js'
+			},
+			js: {
+				options: {
+					seperator: ';'
+				},
+				src: ['src/js/**/*.js'],
+				dest: 'public/js/main.js'
 			}
 		},
 
 		uglify: {
 			templates: {
 				options: {
-					banner: '/*! <%= pkg.name %>  <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+					banner: '/*! <%= pkg.name %> Templates  <%= grunt.template.today("dd-mm-yyyy") %> */\n'
 				},
 				files: {
 					'public/js/templates.min.js': ['<%= concat.templates.dest %>']
+				}
+			},
+			js: {
+				options: {
+					banner: '/*! <%= pkg.name %> JS files <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+				},
+				files: {
+					'public/js/main.min.js': ['<%= concat.js.dest %>']
 				}
 			}
 		},
@@ -26,7 +41,7 @@ module.exports = function(grunt){
 		watch: {
 			scripts: {
 				files: ['src/js/**/*.js'],
-				tasks: ['concat', 'uglify']				
+				tasks: ['concat:js', 'uglify:js']				
 			},
 			jsx: {
 				files: ['src/jsx/**/*.jsx'],
