@@ -1,8 +1,5 @@
 body {
-
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-
-
 }
 
 #page_home {
@@ -17,7 +14,14 @@ body {
 	font-weight: bold;
 }
 
-.login {
+.latest_post_content {
+	max-height: 82px;
+	overflow: hidden;
+}
 
+.next_birthday_image {
+	width: 80px;
+	height: 100px;
+	background-color: #ccc;
 }
 

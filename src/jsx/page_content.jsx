@@ -3,8 +3,10 @@ var PageContent = React.createClass({
 		return (
 			<div className="pageContent container">
 				<Header headerData={this.props.pageData.headerData} />
-				<Section_CurrentInfo />
-				<Section_ItemsContainer />
+				<Section_CurrentInfo currentInfoData={this.props.pageData.itemData.nextitem} />
+				<hr />
+				<Section_Filters />
+				<Section_ItemsContainer itemsData={this.props.pageData.itemData} />
 			</div>
 		)
 	}
