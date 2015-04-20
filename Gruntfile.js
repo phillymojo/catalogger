@@ -16,6 +16,13 @@ module.exports = function(grunt){
 				},
 				src: ['src/js/**/*.js'],
 				dest: 'public/js/main.js'
+			},
+			models: {
+				options: {
+					seperator: ';'
+				},
+				src: ['src/models/**/*.js'],
+				dest: 'public/js/models.js'
 			}
 		},
 
@@ -35,6 +42,14 @@ module.exports = function(grunt){
 				files: {
 					'public/js/main.min.js': ['<%= concat.js.dest %>']
 				}
+			},
+			models: {
+				options: {
+					banner: '/*! <%= pkg.name %> Models <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+				},
+				files: {
+					'public/js/models.min.js': ['<%= concat.models.dest  %>']
+				}
 			}
 		},
 
@@ -46,6 +61,10 @@ module.exports = function(grunt){
 			jsx: {
 				files: ['src/jsx/**/*.jsx'],
 				tasks: ['newer:react', 'concat:templates', 'uglify:templates']
+			},
+			models: {
+				files: ['src/models/**/*.js'],
+				tasks: ['concat:models', 'uglify:models']
 			}
 		},
 

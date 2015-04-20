@@ -131,11 +131,12 @@ var Item = React.createClass({displayName: "Item",
   render: function(){
     return (
       React.createElement("div", {className: "itembox col-md-3"}, 
-        React.createElement(ItemImage, null)
+        React.createElement("div", {className: "itemimage"}), 
+        React.createElement("div", {className: "itemname"}, this.props.data.name)
       )
     )
   }
-});
+}); 
 var ItemImage = React.createClass({displayName: "ItemImage",
   render: function(){
     return (
@@ -147,9 +148,14 @@ var ItemImage = React.createClass({displayName: "ItemImage",
 }); 
 var Section_ItemsContainer = React.createClass({displayName: "Section_ItemsContainer",
 	render: function() {
+		var items = _.map(this.props.itemsData.items, function(item){
+			return(
+				React.createElement(Item, {data: item})
+			);
+		});
 		return (
 			React.createElement("div", {className: "items_container row"}, 
-				React.createElement(Item, null)
+				items
 			)
 		)
 	}

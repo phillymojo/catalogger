@@ -4,12 +4,12 @@ var pageData = {
   contentData: {text: "Content"},
   itemData: {
     items: {
-      1: {},
-      2: {},
-      3: {},
-      4: {},
-      5: {},
-      6: {}
+      1: {name: 'Tori'},
+      2: {name: 'Rocky'},
+      3: {name: 'Squaggle'},
+      4: {name: 'Chicken'},
+      5: {name: 'Butt'},
+      6: {name: 'Cooper'}
     },
     nextitem: {
       data: 'April 16',

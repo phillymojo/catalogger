@@ -25,3 +25,14 @@ body {
 	background-color: #ccc;
 }
 
+.items_container {
+	margin-top: 20px;
+}
+.itembox {
+	margin-bottom: 20px;	
+}
+.itemimage {
+	background-color: #ccc;
+	min-height: 220px;
+}
+
