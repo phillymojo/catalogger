@@ -1,23 +1,28 @@
-var fs = require('fs');
-var path = require('path');
-var express = require('express');
-var bodyParser = require('body-parser');
+/** @jsx React.DOM */
 
-var app = express();
+var React = require('react'); 
+var CataloggerApp = require('./components/CataloggerApp.react');
 
-app.use('/', express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+var pageData = {
+  headerData: {text: "Tori's Beanie Boo Catalog", color: "Red"},
+  contentData: {text: "Content"},
+  itemData: {
+    items: {
+      1: {name: 'Tori'},
+      2: {name: 'Rocky'},
+      3: {name: 'Squaggle'},
+      4: {name: 'Chicken'},
+      5: {name: 'Butt'},
+      6: {name: 'Cooper'}
+    },
+    nextitem: { 
+      data: 'April 16',
+      item: {}
+    }
+  }
+};
 
-// CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-});
-
-app.set('port', process.env.PORT || 5000);
-
-app.listen(app.get('port'), function () {
-    console.log('Catalogger server listening on port ' + app.get('port'));
-});
+React.render(
+	<CataloggerApp pageData= {pageData} />, 
+	document.getElementById('react-app')
+); 

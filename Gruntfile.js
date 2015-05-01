@@ -65,6 +65,10 @@ module.exports = function(grunt){
 			models: {
 				files: ['src/models/**/*.js'],
 				tasks: ['concat:models', 'uglify:models']
+			},
+			browserify: {
+				files: ['app.js', 'components/**/*.js'],
+				tasks: ['browserify:main']
 			}
 		},
 
@@ -80,6 +84,16 @@ module.exports = function(grunt){
 					}
 				]
 			}
+		},
+
+		browserify: {
+			main: {
+				src: 'app.js',
+				dest: 'public/js/bundle.js'
+			},
+			options: {
+				transform: ['reactify']
+			}
 		}
 
 	});
@@ -89,6 +103,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-react');
 	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-browserify');
 
 	grunt.registerTask('default', ['concat', 'uglify']);
 };
