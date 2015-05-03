@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
-var React = require('react'); 
+var React = require('react');
+
 var CataloggerApp = require('./components/CataloggerApp.react');
 
 var pageData = {
