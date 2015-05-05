@@ -9,7 +9,7 @@ module.exports = CataloggerApp = React.createClass({
 		return(
 			<div className="catalogger-app container">
 				<Header headerData={this.props.pageData.headerData} />
-				<CurrentInfo currentInfoData={this.props.pageData.itemData.nextitem} />
+				<CurrentInfo currentInfoData={this.props.pageData.currentInfo} />
 				<hr />
 				<Filters />
 				<ItemsContainer itemsData={this.props.pageData.itemData} />

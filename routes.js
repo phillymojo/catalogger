@@ -1,22 +1,22 @@
 var JSX = require('node-jsx').install();
 var React = require('react');
-var CataloggerApp = require('./components/CataloggerApp.react');
+var CataloggerApp = React.createFactory(require('./components/CataloggerApp.react'));
 var Item = require('./models/Item');
+var pageData = require('./pageData');
 
 module.exports = {
 	index: function(req,res){
-		// Item.getItems(function(items){
-		// 	var markup = React.renderComponentToString(
-		// 		CataloggerApp({
-		// 			items: items
-		// 		})
-		// 	);
+		var items = Item.getItems();
+		
+		var markup = React.renderToString(
+			CataloggerApp({ 
+				pageData: pageData
+			})
+		); 
 
-		// 	res.render('home', {
-		// 		markup: markup,
-		// 		state: JSON.stringify(items)
-		// 	});
-		// });
-res.render('home', {});
+		res.render('home', {
+			markup: markup,
+			state: JSON.stringify(items)
+		});
 	}
 }

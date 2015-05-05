@@ -2,34 +2,16 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var pageData = require('./pageData');
 
 var CataloggerApp = require('./components/CataloggerApp.react');
-
-var pageData = {
-  headerData: {text: "Tori's Beanie Boo Catalog", color: "Red"},
-  contentData: {text: "Content"},
-  itemData: {
-    items: {
-      1: {name: 'Tori'},
-      2: {name: 'Rocky'},
-      3: {name: 'Squaggle'},
-      4: {name: 'Chicken'},
-      5: {name: 'Butt'},
-      6: {name: 'Cooper'}
-    },
-    nextitem: { 
-      data: 'April 16',
-      item: {}
-    }
-  }
-};
 
 React.render(
 	React.createElement(CataloggerApp, {pageData: pageData}), 
 	document.getElementById('react-app')
 ); 
 
-},{"./components/CataloggerApp.react":2,"react":169}],2:[function(require,module,exports){
+},{"./components/CataloggerApp.react":2,"./pageData":170,"react":169}],2:[function(require,module,exports){
 var React = require('react');
 var Header = require('./header/Header.react');
 var CurrentInfo = require('./currentInfo/CurrentInfo.react');
@@ -41,7 +23,7 @@ module.exports = CataloggerApp = React.createClass({displayName: "CataloggerApp"
 		return(
 			React.createElement("div", {className: "catalogger-app container"}, 
 				React.createElement(Header, {headerData: this.props.pageData.headerData}), 
-				React.createElement(CurrentInfo, {currentInfoData: this.props.pageData.itemData.nextitem}), 
+				React.createElement(CurrentInfo, {currentInfoData: this.props.pageData.currentInfo}), 
 				React.createElement("hr", null), 
 				React.createElement(Filters, null), 
 				React.createElement(ItemsContainer, {itemsData: this.props.pageData.itemData})
@@ -57,19 +39,10 @@ var NextBirthday = require('./NextBirthday.react');
 
 module.exports = CurrentInfo = React.createClass({displayName: "CurrentInfo",
 	render: function() {
-		var data = {
-			latestPost: {
-				title: "Latest Post", 
-				content: "A single glance at the thing was sufficient to assure me that I was facing one of those long-extinct, prehistoric creatures whose fossilized remains are found within the outer crust as far back as the Triassic formation, a gigantic labyrinthodon.  And there I was, unarmed, and, with the exception of a loin cloth, as naked as I had come into the world.  I could imagine how my first ancestor felt that distant, prehistoric morn that he encountered for the first time the terrifying progenitor of the thing that had me cornered now beside the restless, mysterious sea."
-			},
-			nextitem: {
-				data: 'April 16'
-			}
-		}
 		return (
 			React.createElement("div", {className: "current_info_container row"}, 
-				React.createElement(LatestPost, {data: data.latestPost}), 
-				React.createElement(NextBirthday, {data: data.nextitem})
+				React.createElement(LatestPost, {data: this.props.currentInfoData.latestPost}), 
+				React.createElement(NextBirthday, {data: this.props.currentInfoData.nextitem})
 			)
 		)
 	}
@@ -235,18 +208,17 @@ var Item = require('./Item.react.js');
 
 module.exports = ItemsContainer = React.createClass({displayName: "ItemsContainer",
 	render: function() {
-		var items = _.map(this.props.itemsData.items, function(item){
-			return(
-				React.createElement(Item, {key: item.id, data: item})
-			);
-		}); 
+ 
 		return (
 			React.createElement("div", {className: "items_container row"}, 
-				items
+				this.props.itemsData.items.map(function(item){
+					return React.createElement(Item, {key: item.id, data: item});
+				})
 			)
-		)
+		);
 	}
 });
+
 
 },{"./Item.react.js":12,"react":169}],14:[function(require,module,exports){
 // shim for using process in browser
@@ -20018,4 +19990,33 @@ module.exports = warning;
 },{"./emptyFunction":128,"_process":14}],169:[function(require,module,exports){
 module.exports = require('./lib/React');
 
-},{"./lib/React":42}]},{},[1]);
+},{"./lib/React":42}],170:[function(require,module,exports){
+var pageData = {
+  headerData: {text: "Tori's Beanie Boo Catalog", color: "Red"},
+  currentInfo: {
+		latestPost: {
+			title: "Latest Post", 
+			content: "A single glance at the thing was sufficient to assure me that I was facing one of those long-extinct, prehistoric creatures whose fossilized remains are found within the outer crust as far back as the Triassic formation, a gigantic labyrinthodon.  And there I was, unarmed, and, with the exception of a loin cloth, as naked as I had come into the world.  I could imagine how my first ancestor felt that distant, prehistoric morn that he encountered for the first time the terrifying progenitor of the thing that had me cornered now beside the restless, mysterious sea."
+		},
+		nextitem: {
+			date: 'April 16',
+			item: {}
+		}
+  },
+  contentData: {text: "Content"},
+  itemData: {
+    items: [
+      {name: 'Tori'},
+      {name: 'Rocky'},
+      {name: 'Squaggle'},
+      {name: 'Chicken'},
+      {name: 'Butt'},
+      {name: 'Cooper'}
+    ]
+  }
+};
+
+module.exports = pageData;
+
+
+},{}]},{},[1]);

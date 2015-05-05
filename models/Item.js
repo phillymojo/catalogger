@@ -12,7 +12,7 @@ schema.statics.getItems = function(callback){
 			items = docs;
 		}
 
-		callback(items);
+		return items;
 	});
 };
 
