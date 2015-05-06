@@ -6,13 +6,12 @@ var schema = new mongoose.Schema({
 });
 
 schema.statics.getItems = function(callback){
-	var items = [];
+	var items = [{name: 'test'}];
 	Item.find(function(err, docs){
 		if(!err){
 			items = docs;
 		}
-
-		return items;
+		callback(items);
 	});
 };
 

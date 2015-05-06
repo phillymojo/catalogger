@@ -6,8 +6,10 @@ var pageData = require('./pageData');
 
 var CataloggerApp = require('./components/CataloggerApp.react');
 
+var initialState = JSON.parse(document.getElementById('initial-state').innerHTML);
+
 React.render(
-	React.createElement(CataloggerApp, {pageData: pageData}), 
+	React.createElement(CataloggerApp, {pageData: pageData, items: initialState}), 
 	document.getElementById('react-app')
 ); 
 
@@ -26,7 +28,7 @@ module.exports = CataloggerApp = React.createClass({displayName: "CataloggerApp"
 				React.createElement(CurrentInfo, {currentInfoData: this.props.pageData.currentInfo}), 
 				React.createElement("hr", null), 
 				React.createElement(Filters, null), 
-				React.createElement(ItemsContainer, {itemsData: this.props.pageData.itemData})
+				React.createElement(ItemsContainer, {itemsData: this.props.items})
 			)
 		);
 	}
@@ -211,8 +213,8 @@ module.exports = ItemsContainer = React.createClass({displayName: "ItemsContaine
  
 		return (
 			React.createElement("div", {className: "items_container row"}, 
-				this.props.itemsData.items.map(function(item){
-					return React.createElement(Item, {key: item.id, data: item});
+				this.props.itemsData.map(function(item, i){
+					return React.createElement(Item, {key: item._id, data: item});
 				})
 			)
 		);
@@ -20006,12 +20008,12 @@ var pageData = {
   contentData: {text: "Content"},
   itemData: {
     items: [
-      {name: 'Tori'},
-      {name: 'Rocky'},
-      {name: 'Squaggle'},
-      {name: 'Chicken'},
-      {name: 'Butt'},
-      {name: 'Cooper'}
+      {name: 'Tori', id: 1},
+      {name: 'Rocky', id: 2},
+      {name: 'Squaggle', id: 3},
+      {name: 'Chicken', id: 4},
+      {name: 'Butt', id: 5},
+      {name: 'Cooper', id: 6}
     ]
   }
 };

@@ -12,7 +12,7 @@ module.exports = CataloggerApp = React.createClass({
 				<CurrentInfo currentInfoData={this.props.pageData.currentInfo} />
 				<hr />
 				<Filters />
-				<ItemsContainer itemsData={this.props.pageData.itemData} />
+				<ItemsContainer itemsData={this.props.items} />
 			</div>
 		);
 	}

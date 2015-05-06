@@ -6,8 +6,8 @@ module.exports = ItemsContainer = React.createClass({
  
 		return (
 			<div className="items_container row">
-				{this.props.itemsData.items.map(function(item){
-					return <Item key={item.id} data={item} />;
+				{this.props.itemsData.map(function(item, i){
+					return <Item key={item._id} data={item} />;
 				})} 
 			</div>
 		);

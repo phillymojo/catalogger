@@ -10,17 +10,7 @@ var pageData = {
 			item: {}
 		}
   },
-  contentData: {text: "Content"},
-  itemData: {
-    items: [
-      {name: 'Tori'},
-      {name: 'Rocky'},
-      {name: 'Squaggle'},
-      {name: 'Chicken'},
-      {name: 'Butt'},
-      {name: 'Cooper'}
-    ]
-  }
+  contentData: {text: "Content"}
 };
 
 module.exports = pageData;
