@@ -196,7 +196,7 @@ var React = require('react');
 module.exports = Item = React.createClass({displayName: "Item",
   render: function(){
     return (
-      React.createElement("div", {className: "itembox col-md-3"}, 
+      React.createElement("div", {className: "itembox col-md-3", "data-id": this.props.data._id}, 
         React.createElement("div", {className: "itemimage"}), 
         React.createElement("div", {className: "itemname"}, this.props.data.name)
       )
@@ -214,7 +214,7 @@ module.exports = ItemsContainer = React.createClass({displayName: "ItemsContaine
 		return (
 			React.createElement("div", {className: "items_container row"}, 
 				this.props.itemsData.map(function(item, i){
-					return React.createElement(Item, {key: item._id, data: item});
+					return React.createElement(Item, {key: i, data: item});
 				})
 			)
 		);
@@ -20005,17 +20005,7 @@ var pageData = {
 			item: {}
 		}
   },
-  contentData: {text: "Content"},
-  itemData: {
-    items: [
-      {name: 'Tori', id: 1},
-      {name: 'Rocky', id: 2},
-      {name: 'Squaggle', id: 3},
-      {name: 'Chicken', id: 4},
-      {name: 'Butt', id: 5},
-      {name: 'Cooper', id: 6}
-    ]
-  }
+  contentData: {text: "Content"}
 };
 
 module.exports = pageData;
