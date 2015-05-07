@@ -19,5 +19,16 @@ module.exports = {
 				state: JSON.stringify(items)
 			});
 		})
+	},
+	addItem: function(req, res){
+		var markup = React.renderToString(
+			CataloggerApp({
+				pageData: pageData,
+				items: []
+			})
+		);
+		res.render('addItem', {
+			markup: markup
+		})
 	}
 }
